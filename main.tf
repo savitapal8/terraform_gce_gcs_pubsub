@@ -52,7 +52,23 @@ resource "google_compute_instance" "default" {
   }
 }
 
+resource "google_storage_bucket" "storage-site" {
+  name          = var.storage_name
+  project       = var.project_id
+  location      = var.storage_location
+  force_destroy = var.force_destroy
 
+  #uniform_bucket_level_access = true
+
+  labels = {
+      key = "value"
+  }
+
+  #encryption{
+      #default_kms_key_name = var.key_storage_name
+      #default_kms_key_name = null 
+  #}
+}
 
 resource "google_pubsub_topic" "pubsub-topic" {
   name = var.pubsub_topic_name
