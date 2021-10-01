@@ -57,6 +57,7 @@ resource "google_compute_instance" "default" {
 resource "google_pubsub_topic" "pubsub-topic" {
   name = var.pubsub_topic_name
   project = var.project_id
+  kms_key_name = var.kms_key_self_link
   labels = {
     foo = "bar"
   }
